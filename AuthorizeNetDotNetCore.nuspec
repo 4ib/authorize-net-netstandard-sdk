@@ -6,8 +6,8 @@
     <title>AuthorizeNet.DotNetCore</title>
     <authors>Authorize.Net</authors>
     <owners>AuthorizeNet</owners>
-    <licenseUrl>https://github.com/AuthorizeNet/dotnet-core-sdk-beta/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/AuthorizeNet/dotnet-core-sdk-beta</projectUrl>
+    <licenseUrl>https://github.com/4ib/authorize-net-netstandard-sdk/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/4ib/authorize-net-netstandard-sdk</projectUrl>
     <iconUrl>http://developer.authorize.net/resources/images/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use this SDK to integrate with the Authorize.Net APIs for Payment Transactions, Recurring Billing and Customer Payment Profiles.</description>
