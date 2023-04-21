@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>AuthorizeNet.DotNetCore</id>
-    <version>1.0.0-beta</version>
-    <title>AuthorizeNet.DotNetCore</title>
+    <id>AuthorizeNet.Standard</id>
+    <version>0.1.4</version>
+    <title>AuthorizeNet.Standard</title>
     <authors>Authorize.Net</authors>
     <owners>AuthorizeNet</owners>
     <licenseUrl>https://github.com/4ib/authorize-net-netstandard-sdk/blob/master/LICENSE</licenseUrl>
@@ -15,7 +15,7 @@
     <tags>Payments API Authorize.Net</tags>
   </metadata>
   <files>
-    <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNet.dll" target="lib\AuthorizeNet.dll" />
-    <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNet.xml" target="lib\AuthorizeNet.xml" />
+    <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNETStandard.dll" target="lib\AuthorizeNet.dll" />
+    <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNETStandard.xml" target="lib\AuthorizeNet.xml" />
   </files>
 </package>
