@@ -17,5 +17,7 @@
   <files>
     <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNETStandard.dll" target="lib\AuthorizeNet.dll" />
     <file src="AuthorizeNET\AuthorizeNET\bin\Release\netstandard2.0\AuthorizeNETStandard.xml" target="lib\AuthorizeNet.xml" />
+    <file src="AuthorizeNET\AuthorizeNET\bin\Release\net48\AuthorizeNETStandard.dll" target="lib\AuthorizeNet.dll" />
+    <file src="AuthorizeNET\AuthorizeNET\bin\Release\net48\AuthorizeNETStandard.xml" target="lib\AuthorizeNet.xml" />
   </files>
 </package>

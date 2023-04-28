@@ -2,10 +2,11 @@
 {
     using Api.Contracts.V1;
     using Api.Controllers.Bases;
-    using Microsoft.Extensions.Logging;
+	using Flurl.Http;
+	using Flurl.Util;
+	using Microsoft.Extensions.Logging;
     using System;
     using System.Net;
-    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -35,8 +36,9 @@
 			Logger.LogDebug("MerchantInfo->LoginId/TransactionKey: '{0}':'{1}'->{2}", request.merchantAuthentication.name, request.merchantAuthentication.ItemElementName, request.merchantAuthentication.Item);
 
 			var postUrl = GetPostUrl(env);
-			
-			string responseAsString = null;
+
+            /*
+            string responseAsString = null;
 			using (var clientHandler = new HttpClientHandler())
 			{
 				clientHandler.Proxy = SetProxyIfRequested(clientHandler.Proxy, env);
@@ -56,7 +58,21 @@
 
 				}
 			}
-			if (null != responseAsString)
+			*/
+
+            var content = XmlUtility.Serialize( request );
+            var httpConnectionTimeout = AuthorizeNet.Environment.getIntProperty( Constants.HttpConnectionTimeout );
+            var timeout = TimeSpan.FromMilliseconds( httpConnectionTimeout != 0 ? httpConnectionTimeout : Constants.HttpConnectionDefaultTimeout );
+            var responseAsString = await postUrl
+                .ToInvariantString()
+                .WithHeader( "Content-Type", "text/xml" )
+                .WithTimeout( timeout )
+                .PostStringAsync( content )
+                .ReceiveString()
+                ;
+
+
+            if ( null != responseAsString)
 			{
 				try
 				{
