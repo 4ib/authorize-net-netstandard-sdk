@@ -5,7 +5,6 @@ namespace AuthorizeNet.Api.Controllers.Bases
     using System;
     using Contracts.V1;
     using Utilities;
-    using Microsoft.Extensions.Logging;
     using System.Threading.Tasks;
     using AuthorizeNET.Utilities;
 
@@ -13,7 +12,7 @@ namespace AuthorizeNet.Api.Controllers.Bases
             where TQ : ANetApiRequest
             where TS : ANetApiResponse
     {
-        protected static ILogger Logger = LogFactory.getLog(typeof(ApiOperationBase<TQ, TS>));
+        //protected static ILogger Logger = LogFactory.getLog(typeof(ApiOperationBase<TQ, TS>));
 
         public static AuthorizeNet.Environment RunEnvironment { get; set; }
         public static merchantAuthenticationType MerchantAuthentication { get; set; }
@@ -30,12 +29,12 @@ namespace AuthorizeNet.Api.Controllers.Bases
         {
             if (null == apiRequest)
             {
-                Logger.LogError("null apiRequest");
+                //Logger.LogError("null apiRequest");
                 throw new ArgumentNullException(nameof(apiRequest), "Input request cannot be null");
             }
             if (null != GetApiResponse())
             {
-                Logger.LogError(GetApiResponse().ToString());
+                //Logger.LogError(GetApiResponse().ToString());
                 throw new InvalidOperationException("Response should be null");
             }
 
@@ -43,7 +42,7 @@ namespace AuthorizeNet.Api.Controllers.Bases
             _responseClass = typeof(TS);
             SetApiRequest(apiRequest);
 
-            Logger.LogDebug("Creating instance for request:'{0}' and response:'{1}'", _requestClass, _responseClass);
+            //Logger.LogDebug("Creating instance for request:'{0}' and response:'{1}'", _requestClass, _responseClass);
             Validate();
         }
 
@@ -102,30 +101,30 @@ namespace AuthorizeNet.Api.Controllers.Bases
 
             if (null != httpApiResponse)
             {
-                Logger.LogDebug("Received Response:'{0}' for request:'{1}'", httpApiResponse, GetApiRequest());
+                //Logger.LogDebug("Received Response:'{0}' for request:'{1}'", httpApiResponse, GetApiRequest());
                 if (httpApiResponse.GetType() == _responseClass)
                 {
                     var response = (TS)httpApiResponse;
                     SetApiResponse(response);
-                    Logger.LogDebug("Setting response: '{0}'", response);
+                    //Logger.LogDebug("Setting response: '{0}'", response);
                 }
                 else if (httpApiResponse.GetType() == typeof(ErrorResponse))
                 {
                     SetErrorResponse(httpApiResponse);
-                    Logger.LogDebug("Received ErrorResponse:'{0}'", httpApiResponse);
+                    //Logger.LogDebug("Received ErrorResponse:'{0}'", httpApiResponse);
                 }
                 else
                 {
                     SetErrorResponse(httpApiResponse);
-                    Logger.LogError("Invalid response:'{0}'", httpApiResponse);
+                    //Logger.LogError("Invalid response:'{0}'", httpApiResponse);
                 }
-                Logger.LogDebug("Response obtained: {0}", GetApiResponse());
+                //Logger.LogDebug("Response obtained: {0}", GetApiResponse());
                 SetResultStatus();
 
             }
             else
             {
-                Logger.LogDebug("Got a 'null' Response for request:'{0}'\n", GetApiRequest());
+                //Logger.LogDebug("Got a 'null' Response for request:'{0}'\n", GetApiRequest());
             }
             AfterExecute();
         }

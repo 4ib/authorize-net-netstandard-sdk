@@ -4,7 +4,6 @@
     using Api.Controllers.Bases;
 	using Flurl.Http;
 	using Flurl.Util;
-	using Microsoft.Extensions.Logging;
     using System;
     using System.Net;
     using System.Text;
@@ -13,13 +12,13 @@
     public static class HttpUtility
 	{
         
-		private static readonly ILogger Logger = LogFactory.getLog(typeof(HttpUtility));
+		//private static readonly ILogger Logger = LogFactory.getLog(typeof(HttpUtility));
 		private static bool _proxySet;
 
 		private static Uri GetPostUrl(AuthorizeNet.Environment env)
 		{
 			var postUrl = new Uri(env.XmlBaseUrl + "/xml/v1/request.api");
-			Logger.LogDebug("Creating PostRequest Url: '{0}'", postUrl);
+			//Logger.LogDebug("Creating PostRequest Url: '{0}'", postUrl);
 
 			return postUrl;
 		}
@@ -33,7 +32,7 @@
 			{
 				throw new ArgumentNullException("request");
 			}
-			Logger.LogDebug("MerchantInfo->LoginId/TransactionKey: '{0}':'{1}'->{2}", request.merchantAuthentication.name, request.merchantAuthentication.ItemElementName, request.merchantAuthentication.Item);
+			//Logger.LogDebug("MerchantInfo->LoginId/TransactionKey: '{0}':'{1}'->{2}", request.merchantAuthentication.name, request.merchantAuthentication.ItemElementName, request.merchantAuthentication.Item);
 
 			var postUrl = GetPostUrl(env);
 
@@ -105,7 +104,7 @@
 				var proxyUri = new Uri(string.Format("{0}://{1}:{2}", Constants.ProxyProtocol, env.HttpProxyHost, env.HttpProxyPort));
 				if (!_proxySet)
 				{
-					Logger.LogInformation(string.Format("Setting up proxy to URL: '{0}'", proxyUri));
+					//Logger.LogInformation(string.Format("Setting up proxy to URL: '{0}'", proxyUri));
 					_proxySet = true;
 				}
 

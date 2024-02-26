@@ -3,14 +3,13 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.Extensions.Logging;
 
 namespace AuthorizeNet.Utilities
 {
     public static class XmlUtility
     {
 
-        private static readonly ILogger Logger = LogFactory.getLog(typeof(XmlUtility));
+        //private static readonly ILogger Logger = LogFactory.getLog(typeof(XmlUtility));
 
         public static string Serialize<T>(T entity) 
         {
@@ -33,7 +32,7 @@ namespace AuthorizeNet.Utilities
             }
             catch (Exception e)
             {
-                Logger.LogError("Error:'{0}' when serializing object:'{1}' to xml", e.Message, requestType);
+                //Logger.LogError("Error:'{0}' when serializing object:'{1}' to xml", e.Message, requestType);
                 throw;
             }
 
@@ -57,7 +56,7 @@ namespace AuthorizeNet.Utilities
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError("Error:'{0}' when deserializing the into object:'{1}' from xml:'{2}'", e.Message, responseType, xml);
+                    //Logger.LogError("Error:'{0}' when deserializing the into object:'{1}' from xml:'{2}'", e.Message, responseType, xml);
                     throw;
                 }
             }
